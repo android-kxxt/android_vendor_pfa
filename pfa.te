@@ -5,3 +5,53 @@ allow shell pfa : process transition ;
 allow shell pfa : process2 nosuid_transition ;
 allow shell linux_pfa_file:{ fifo_file file dir lnk_file anon_inode } * ;
 allow shell linux_pfa_file:{ socket_class_set ipc_class_set fd } * ;
+
+# Modified from su.te:
+
+typeattribute pfa mlstrustedsubject;
+
+# Add pfa to various domains
+net_domain(pfa)
+
+# grant pfa access to vndbinder
+vndbinder_use(pfa)
+
+dontaudit pfa self:capability_class_set *;
+dontaudit pfa self:capability2 *;
+dontaudit pfa kernel:security *;
+dontaudit pfa { kernel file_type }:system *;
+dontaudit pfa self:memprotect *;
+dontaudit pfa domain:anon_inode *;
+dontaudit pfa domain:{ process process2 } *;
+dontaudit pfa domain:fd *;
+dontaudit pfa domain:dir *;
+dontaudit pfa domain:lnk_file *;
+dontaudit pfa domain:{ fifo_file file } *;
+dontaudit pfa domain:socket_class_set *;
+dontaudit pfa domain:ipc_class_set *;
+dontaudit pfa domain:key *;
+dontaudit pfa fs_type:filesystem *;
+dontaudit pfa {fs_type dev_type file_type}:dir_file_class_set *;
+dontaudit pfa node_type:node *;
+dontaudit pfa node_type:{ tcp_socket udp_socket rawip_socket } *;
+dontaudit pfa netif_type:netif *;
+dontaudit pfa port_type:socket_class_set *;
+dontaudit pfa port_type:{ tcp_socket dccp_socket } *;
+dontaudit pfa domain:peer *;
+dontaudit pfa domain:binder *;
+dontaudit pfa property_type:property_service *;
+dontaudit pfa property_type:file *;
+dontaudit pfa service_manager_type:service_manager *;
+dontaudit pfa hwservice_manager_type:hwservice_manager *;
+dontaudit pfa vndservice_manager_type:service_manager *;
+dontaudit pfa servicemanager:service_manager list;
+dontaudit pfa hwservicemanager:hwservice_manager list;
+dontaudit pfa vndservicemanager:service_manager list;
+dontaudit pfa keystore:keystore_key *;
+dontaudit pfa keystore:keystore2 *;
+dontaudit pfa domain:drmservice *;
+dontaudit pfa unlabeled:filesystem *;
+dontaudit pfa postinstall_file:filesystem *;
+dontaudit pfa domain:bpf *;
+dontaudit pfa unlabeled:vsock_socket *;
+dontaudit pfa self:perf_event *;
