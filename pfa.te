@@ -1,0 +1,6 @@
+type pfa, domain ;
+permissive pfa ;
+type_transition shell linux_pfa_file : process pfa ;
+allow shell pfa : process transition ;
+allow shell linux_pfa_file:{ fifo_file file dir lnk_file anon_inode } * ;
+allow shell linux_pfa_file:{ socket_class_set ipc_class_set fd } * ;
