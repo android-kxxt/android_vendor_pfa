@@ -1,0 +1,5 @@
+cc_prebuilt_binary {
+    name: "shell-selector",
+    visibility: ["//visibility:public"],
+    srcs: ["shell-selector"],
+}

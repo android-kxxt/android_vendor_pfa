@@ -1,2 +1,3 @@
 # Pacman for Android
 /data/(usr|var|etc|home|opt)(/.*)? u:object_r:linux_pfa_file:s0
+/pfa-installation-archive.tar.zst  u:object_r:linux_pfa_file:s0

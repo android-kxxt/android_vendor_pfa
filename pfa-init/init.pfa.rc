@@ -1,0 +1,4 @@
+# WIP
+
+on late-fs
+    exec -- pfa-firstboot

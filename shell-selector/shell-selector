@@ -1,0 +1,9 @@
+#!/system/bin/sh
+
+# This script is used to select shell for `adb shell`.
+
+if [ -f /data/usr/bin/bash ]; then
+    exec /data/usr/bin/bash --login "$@"
+else
+    exec /system/bin/sh "$@"
+fi
