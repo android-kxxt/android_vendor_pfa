@@ -1,0 +1,16 @@
+# WIP
+
+service pfa-firstboot /system/bin/pfa-firstboot
+    loglevel 7
+    seclabel u:r:pfa:s0
+    class main
+    user root
+    group root
+    oneshot
+    on post-fs-data
+
+on property:vendor.pfa-firstboot=1
+    start pfa-firstboot
+
+on property:vendor.pfa-firstboot=0
+    stop pfa-firstboot

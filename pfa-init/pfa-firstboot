@@ -1,0 +1,8 @@
+#!/system/bin/sh
+
+if [ ! -f /data/.pfa-root ]; then
+    echo "$0: pfa installation not found, extracting..." > /dev/kmsg
+    bsdtar -xjf /product/pfa-installation-archive.tar.zst -C /data 2>&1 | tee /dev/kmsg
+    echo "$0: pfa installation complete" > /dev/kmsg
+    restorecon -R /data/{usr,var,opt,home,etc}
+fi
