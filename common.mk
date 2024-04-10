@@ -9,7 +9,8 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
 	$(PFA_PATH)/installation-archive.tar.zst:$(TARGET_COPY_OUT_PRODUCT)/pfa-installation-archive.tar.zst \
-	$(PFA_PATH)/pfa-init/pfa.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/pfa.rc
+	$(PFA_PATH)/pfa-init/pfa.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/pfa.rc \
+	$(PFA_PATH)/nix/README:$(TARGET_COPY_OUT_ROOT)/nix/README
 
 SELINUX_IGNORE_NEVERALLOWS := true
 
