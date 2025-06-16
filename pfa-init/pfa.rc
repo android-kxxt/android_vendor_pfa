@@ -5,7 +5,7 @@
 #
 
 service pfa-firstboot /system/bin/pfa-firstboot
-    seclabel u:r:pfa:s0
+    seclabel u:r:su:s0
     class main
     user root
     group root

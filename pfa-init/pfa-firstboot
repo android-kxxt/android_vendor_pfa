@@ -4,9 +4,9 @@ set -e
 
 if [ ! -f /data/.pfa-root ]; then
     echo "$0: pfa installation not found, extracting..." > /dev/kmsg
-    bsdtar -xjf /product/pfa-installation-archive.tar.zst -C /data 2>&1 | tee /dev/kmsg
+    bsdtar --no-xattrs -xf /product/pfa-installation-archive.tar.zst -C /data 2>&1 | tee /dev/kmsg
     echo "$0: pfa installation complete" > /dev/kmsg
-    restorecon -R /data/{usr,var,opt,home,etc}
+    restorecon -R /data/{,usr,var,opt,home,etc}
     echo "$0: restorecon complete" > /dev/kmsg
     echo -e "\nshell ALL=(ALL:ALL) ALL\n" >> /data/etc/sudoers
     echo "$0: added shell to sudoers" > /dev/kmsg
