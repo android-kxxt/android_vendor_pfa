@@ -1,5 +1,6 @@
 cc_prebuilt_binary {
     name: "pfa-firstboot",
+    check_elf_files: false,
     visibility: ["//visibility:public"],
     srcs: ["pfa-firstboot"],
 }
